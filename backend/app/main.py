@@ -1,19 +1,27 @@
 # =======================
+
 # ENV LOADING (FIRST)
+
 # =======================
-from dotenv import load_dotenv
+
 import os
 from pathlib import Path
+from dotenv import load_dotenv
 
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(**file**).resolve().parent.parent.parent
 ENV_PATH = BASE_DIR / ".env"
 
-load_dotenv(dotenv_path=ENV_PATH, override=True)
+# Load local .env if available; preserve Render environment variables
 
-ASSEMBLYAI_KEY = os.getenv("ASSEMBLY_API_KEY")
+load_dotenv(dotenv_path=ENV_PATH, override=False)
+
+# IMPORTANT: Match the variable name configured in Render
+
+ASSEMBLYAI_KEY = os.getenv("ASSEMBLYAI_API_KEY")
 
 print("DEBUG ENV PATH:", ENV_PATH)
 print("DEBUG FINAL KEY PRESENT:", bool(ASSEMBLYAI_KEY))
+
 
 # =======================
 # CONFIGURE ASSEMBLYAI
