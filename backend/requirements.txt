@@ -1,7 +1,9 @@
 fastapi
-uvicorn
+uvicorn[standard]
 python-dotenv
 requests
 pydantic
 assemblyai
 python-multipart
+psycopg2-binary
+google-genai
